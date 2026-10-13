@@ -1,0 +1,24 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.kaggle/
+kaggle.json
+/data/raw/*
+!/data/raw/.gitkeep
+/data/processed/*
+!/data/processed/.gitkeep
+/rapports/*
+!/rapports/.gitkeep
+.vscode/
+!/rapports/figures/
+/rapports/figures/*
+!/rapports/figures/*.png
+# Notebooks de travail locaux ; le parcours public est autonome dans 00.
+/notebooks/01_nettoyage_donnees.ipynb
+/notebooks/02_exploration_visuelle.ipynb
+/notebooks/03_validation_temporelle.ipynb
+/notebooks/04_modelisation.ipynb
+/notebooks/05_soumission_kaggle.ipynb
+*.code-workspace
