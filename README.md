@@ -33,6 +33,8 @@ Le modèle améliore la précision locale face à la baseline. La figure compare
 
 > **Deux évaluations distinctes.** Les scores locaux et Kaggle portent sur des périodes différentes et ne sont pas directement comparables. Plus bas est meilleur. Kaggle fournit ici un score global ; les ventes réelles et erreurs individuelles du test ne sont pas connues.
 
+**Pourquoi le score Kaggle est plus élevé.** Rejouée sur les 16 derniers jours connus, la même chaîne de soumission obtient un RMSLE de 0,430 : le code de soumission n’explique donc pas l’écart. La période du test, du 16 au 31 août 2017, correspond à la rentrée scolaire dans la Sierra ; en 2016, les fournitures scolaires y vendaient environ quinze fois plus qu’en juillet. Avec une seule année d’historique, le modèle étend ce pic, par le jour de l’année, à des séries inactives : 65 séries magasin-famille sans vente depuis plus d’un an reçoivent environ 8 unités par jour. Si elles vendent zéro, cet effet suffit à porter le score d’environ 0,43 à 0,51. Les plis locaux, de juin à mi-août, ne couvrent pas cette période.
+
 ## Comprendre les données avant de prévoir
 
 Les ventes sont observées par **date × magasin × famille**, du **1er janvier 2013 au 15 août 2017**, soit **1 782 séries**. Elles représentent des volumes, pas du chiffre d’affaires.
@@ -75,12 +77,12 @@ Le [notebook principal](notebooks/00_projet_complet.ipynb) contient **22 étapes
 
 | **Partie**           | **Contenu**                                                              | **Accès**                                              |
 | -------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| **01 · Cadrer**     | Question métier, environnement et dictionnaire des sept fichiers              | [Étapes 1–3](notebooks/00_projet_complet.ipynb#section-1)    |
-| **02 · Fiabiliser** | Diagnostic, nettoyage, contrôles et statistiques de toutes les variables      | [Étapes 4–8](notebooks/00_projet_complet.ipynb#section-4)    |
-| **03 · Explorer**   | Ventes, familles, magasins, promotions, transactions, pétrole et événements | [Étapes 9–14](notebooks/00_projet_complet.ipynb#section-9)   |
-| **04 · Prévoir**   | Validation chronologique, baselines, variables, LightGBM et erreurs            | [Étapes 15–19](notebooks/00_projet_complet.ipynb#section-15) |
+| **01 · Cadrer**     | Question métier, environnement et dictionnaire des sept fichiers              | [Étapes 1-3](notebooks/00_projet_complet.ipynb#section-1)    |
+| **02 · Fiabiliser** | Diagnostic, nettoyage, contrôles et statistiques de toutes les variables      | [Étapes 4-8](notebooks/00_projet_complet.ipynb#section-4)    |
+| **03 · Explorer**   | Ventes, familles, magasins, promotions, transactions, pétrole et événements | [Étapes 9-14](notebooks/00_projet_complet.ipynb#section-9)   |
+| **04 · Prévoir**   | Validation chronologique, baselines, variables, LightGBM et erreurs            | [Étapes 15-19](notebooks/00_projet_complet.ipynb#section-15) |
 | **05 · Simuler**    | Service, commandes, stock et analyse de sensibilité                           | [Étape 20](notebooks/00_projet_complet.ipynb#section-20)      |
-| **06 · Restituer**  | Soumission contrôlée, bilan, limites et perspectives                         | [Étapes 21–22](notebooks/00_projet_complet.ipynb#section-21) |
+| **06 · Restituer**  | Soumission contrôlée, bilan, limites et perspectives                         | [Étapes 21-22](notebooks/00_projet_complet.ipynb#section-21) |
 
 ### Les choix qui rendent l’évaluation interprétable
 
@@ -104,6 +106,8 @@ Réduction de 0,01944, soit environ 3,2 %. Elle concerne la configuration dans s
 ## Reproduire l’étude
 
 **Environnement de référence : Python 3.12**, avec les versions de [requirements.txt](requirements.txt). Le notebook s’exécute de haut en bas depuis les fichiers bruts ; aucun notebook intermédiaire ou CSV préparé n’est requis.
+
+**Validation du 22 octobre 2026 :** exécution complète dans un environnement neuf créé depuis `requirements.txt` et les sept fichiers Kaggle. Les 68 cellules de code s’exécutent sans erreur et toutes les sorties sont identiques à la version précédente, dont le RMSLE local de 0,4038 contre 0,4561 pour la baseline.
 
 Les données ne sont pas incluses dans le dépôt. Télécharger les fichiers de la [compétition Kaggle](https://www.kaggle.com/competitions/store-sales-time-series-forecasting), puis placer les sept CSV dans `data/raw/store-sales-time-series-forecasting/` : `train.csv`, `test.csv`, `stores.csv`, `holidays_events.csv`, `oil.csv`, `transactions.csv` et `sample_submission.csv`.
 
@@ -150,7 +154,7 @@ Les exports de CSV sont **désactivés par défaut** (`EXPORTER_FICHIERS = False
 
 ## Prochaines questions à tester
 
-Mesurer séparément l’apport des événements et des caractéristiques magasin, comparer prévisions récursives et directes, réserver une période finale après sélection et calibrer l’incertitude à partir d’erreurs disponibles avant l’origine. Une simulation opérationnelle nécessiterait ensuite des stocks, délais et coûts réels.
+Valider aussi sur la fin août 2016 et traiter les séries inactives (prévision nulle ou retrait du jour de l’année), puis resoumettre. Mesurer séparément l’apport des événements et des caractéristiques magasin, comparer prévisions récursives et directes, réserver une période finale après sélection et calibrer l’incertitude à partir d’erreurs disponibles avant l’origine. Une simulation opérationnelle nécessiterait ensuite des stocks, délais et coûts réels.
 
 **Sources :** [Kaggle Store Sales](https://www.kaggle.com/competitions/store-sales-time-series-forecasting) · [Accès et références](LIENS.md) · [Décisions méthodologiques](DECISIONS.md)
 
@@ -161,5 +165,5 @@ Le code et l’analyse sont publiés sous [licence MIT](LICENSE). Les données d
 ---
 
 **Auteur : Abdoulaye KONE**, projet personnel  
-*Portfolio Data Science — Prévision des ventes et simulation de stock*  
+*Portfolio Data Science - Prévision des ventes et simulation de stock*  
 [LinkedIn](https://linkedin.com/in/abdoulaye-kone) · [GitHub](https://github.com/abdoul4Kone)

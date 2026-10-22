@@ -1,8 +1,8 @@
-# Sources — Prévision des ventes et gestion du stock
+# Sources : prévision des ventes et gestion du stock
 
 ## Jeu de données principal
 
-- **Kaggle — Store Sales - Time Series Forecasting** : https://www.kaggle.com/competitions/store-sales-time-series-forecasting
+- **Kaggle : Store Sales - Time Series Forecasting** : https://www.kaggle.com/competitions/store-sales-time-series-forecasting
   - Ventes quotidiennes d’un distributeur alimentaire, avec magasins, produits, promotions et calendriers.
   - Compte Kaggle et acceptation des règles de la compétition nécessaires au téléchargement.
   - Ne pas publier ou redistribuer les fichiers du concours ; consulter les règles Kaggle avant tout usage ou déploiement public.
@@ -16,7 +16,7 @@
 
 ## Alternative avec licence explicite
 
-- **UCI — Online Retail II** : https://archive.ics.uci.edu/dataset/502/online+retail+ii
+- **UCI : Online Retail II** : https://archive.ics.uci.edu/dataset/502/online+retail+ii
   - Transactions en ligne britanniques de 2009 à 2011, sous licence CC BY 4.0 avec attribution.
   - Utile pour agréger les ventes par produit et période, mais ne contient pas de magasin, de stock réel, de rupture ou de délai fournisseur. Ce n’est donc pas le meilleur choix pour notre simulation magasin-produit.
 
@@ -28,4 +28,4 @@
 ---
 
 **Auteur : Abdoulaye KONE**  
-*Portfolio Data Science — Prévision des ventes et simulation de stock*
+*Portfolio Data Science - Prévision des ventes et simulation de stock*
