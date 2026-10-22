@@ -1,5 +1,9 @@
 # Prévision des ventes et simulation de stock
 
+> **In English.** Daily sales forecasting for 54 stores and 33 product families of an Ecuadorian retailer (Kaggle Store Sales, 3 million rows), from data audit to a recursive LightGBM model.
+> Time-based backtesting gives a local RMSLE of 0.404 against 0.456 for a four-week weekday-average baseline; the accepted Kaggle submission scores 0.5888.
+> The forecasts then drive an educational stock simulation comparing service level, orders and inventory. Personal project by Abdoulaye KONE.
+
 **Portfolio Data Science · Analyse exploratoire · Séries temporelles · LightGBM**
 
 Une étude des ventes de magasins équatoriens, du diagnostic des données à la prévision quotidienne par magasin et famille, puis à une simulation pédagogique de stock.
@@ -106,12 +110,11 @@ Les données ne sont pas incluses dans le dépôt. Télécharger les fichiers de
 <details>
 <summary><strong>Installation et téléchargement sous Windows / PowerShell</strong></summary>
 
-Depuis la racine du projet, créer un environnement hors de OneDrive :
+Depuis la racine du projet, créer un environnement virtuel, ignoré par Git :
 
 ```powershell
-$venvStock = "$env:LOCALAPPDATA\venvs\portfolio-forecast-stock"
-py -3.12 -m venv $venvStock
-& "$venvStock\Scripts\Activate.ps1"
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 ```
 
@@ -138,9 +141,11 @@ Les exports de CSV sont **désactivés par défaut** (`EXPORTER_FICHIERS = False
 ├── rapports/
 │   └── figures/                 cinq figures de présentation
 ├── requirements.txt
+├── .gitattributes
 ├── .gitignore
 ├── LIENS.md
-└── DECISIONS.md
+├── DECISIONS.md
+└── LICENSE
 ```
 
 ## Prochaines questions à tester
@@ -149,7 +154,12 @@ Mesurer séparément l’apport des événements et des caractéristiques magasi
 
 **Sources :** [Kaggle Store Sales](https://www.kaggle.com/competitions/store-sales-time-series-forecasting) · [Accès et références](LIENS.md) · [Décisions méthodologiques](DECISIONS.md)
 
+## Licence
+
+Le code et l’analyse sont publiés sous [licence MIT](LICENSE). Les données de la compétition ne sont pas redistribuées : elles restent soumises aux [règles Kaggle](https://www.kaggle.com/competitions/store-sales-time-series-forecasting/rules).
+
 ---
 
-**Auteur : Abdoulaye KONE**  
-*Portfolio Data Science — Prévision des ventes et simulation de stock*
+**Auteur : Abdoulaye KONE**, projet personnel  
+*Portfolio Data Science — Prévision des ventes et simulation de stock*  
+[LinkedIn](https://linkedin.com/in/abdoulaye-kone) · [GitHub](https://github.com/abdoul4Kone)
